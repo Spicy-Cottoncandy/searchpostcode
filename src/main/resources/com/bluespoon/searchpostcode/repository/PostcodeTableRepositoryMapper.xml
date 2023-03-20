@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bluespoon.searchpostcode.repository.PostcodeTableRepositoryMapper">
+    <select id="searchByPostcode" resultType="com.bluespoon.searchpostcode.entity.PostcodeTable">
+        SELECT
+            id,
+            postcode,
+            kana_prefecture as 'kanaPrefecture',
+            kana_city as 'kanaCity',
+            kana_street as 'kanaStreet',
+            kanji_prefecture as 'kanjiPrefecture',
+            kanji_city as 'kanjiCity',
+            kanji_street as 'kanjiStreet'
+        FROM
+            POSTCODE_TABLE
+        WHERE
+        postcode = #{postcode}
+    </select>
+</mapper>

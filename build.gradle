@@ -1,0 +1,59 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.0.4'
+	id 'io.spring.dependency-management' version '1.1.0'
+}
+
+group = 'com.bluespoon'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-aop'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	implementation "org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.1"
+	implementation 'com.mysql:mysql-connector-j:8.0.32'
+	implementation 'com.fasterxml.jackson.core:jackson-databind:2.14.2'
+
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.junit.jupiter:junit-jupiter'
+	testImplementation 'org.junit.jupiter:junit-jupiter-api'
+	testImplementation 'org.assertj:assertj-core:3.24.2'
+
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+//	runtimeOnly 'mysql:mysql-connector-java'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+
+
+tasks.withType(Test) {
+    systemProperty "file.encoding", "UTF-8"
+}
+
+//ConstraintViolationException で、パラメタ名が取得できないことの回避
+tasks.withType(JavaCompile) {
+    options.compilerArgs.add("-parameters")
+}
+
+//ConstraintViolationException で、パラメタ名が取得できないことの回避
+//https://qiita.com/someone7140/items/317307fa0ca9f53917bb
+//compileJava {
+//    options.compilerArgs << '-parameters' 
+//}
