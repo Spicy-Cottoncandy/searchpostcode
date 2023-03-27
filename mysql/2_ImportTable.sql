@@ -1,5 +1,5 @@
 load data local
-  infile '/home/ec2-user/KEN_ALL_utf8_out.csv'
+  infile '/docker-entrypoint-initdb.d/KEN_ALL_utf8_out.csv'
   into table POSTCODE_TABLE
   fields
     terminated by ','
