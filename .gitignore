@@ -39,3 +39,4 @@ out/
 ## Custom setting
 log/
 mysql/KEN_ALL_utf8_out.csv
+*.old
