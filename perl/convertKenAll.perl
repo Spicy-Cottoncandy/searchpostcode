@@ -3,7 +3,7 @@
 use strict;
 
 my $INPUT = '/home/ec2-user/KEN_ALL_utf8.csv';
-my $OUTPUT = '/home/ec2-user/KEN_ALL_utf8_out.csv';
+my $OUTPUT = '/home/ec2-user/import.csv';
 
 open my $infh, '<', $INPUT;
 open my $outfh, '>', $OUTPUT;
